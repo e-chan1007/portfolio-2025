@@ -1,0 +1,20 @@
+{
+	"name": "@e-chan1007/portfolio",
+	"type": "module",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"sass-embedded": "^1.89.2",
+		"typescript": "^5.8.3",
+		"@inlang/paraglide-js": "2.1.0"
+	},
+	"packageManager": "bun@1.2.16",
+	"dependencies": {
+		"@astrojs/cloudflare": "^12.5.5",
+		"astro": "^5.9.4"
+	}
+}

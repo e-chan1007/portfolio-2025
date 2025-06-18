@@ -1,0 +1,18 @@
+{
+  "$schema": "https://unpkg.com/wrangler@latest/config-schema.json",
+  "name": "portfolio",
+  "main": "./dist/_worker.js/index.js",
+  "compatibility_date": "2025-06-18",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist"
+  },
+  "observability": {
+    "logs": {
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,36 @@
+---
+import { getLocale } from "@/paraglide/runtime.js";
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+const locale = getLocale();
+---
+
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style lang="scss" is:global>
+  @use "@/assets/styles/variables" as var;
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    color: var.$color-text;
+    background-color: var.$color-background;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+</style>
