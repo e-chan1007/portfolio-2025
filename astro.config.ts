@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 
 import cloudflare from "@astrojs/cloudflare";
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
+import Icons from "unplugin-icons/vite";
 
 export default defineConfig({
   site: process.env.SITE_URL || "https://www.e-chan.me/",
@@ -24,6 +25,9 @@ export default defineConfig({
             ],
           },
         ]
+      }),
+      Icons({
+        compiler: "astro",
       })
     ]
   }

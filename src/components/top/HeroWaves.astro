@@ -1,0 +1,62 @@
+<div class="waves-container">
+  <svg style="display: none;">
+    <defs>
+      <symbol id="wave-shape" viewBox="0 0 1000 100" preserveAspectRatio="none">
+        <path d="M0,50 Q250,0 500,50 T1000,50 L1000,100 L0,100 Z"></path>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="wave wave-back">
+    <svg><use href="#wave-shape"></use></svg>
+    <svg><use href="#wave-shape"></use></svg>
+  </div>
+  <div class="wave wave-front">
+    <svg><use href="#wave-shape"></use></svg>
+    <svg><use href="#wave-shape"></use></svg>
+  </div>
+</div>
+
+<style lang="scss">
+  .waves-container {
+    width: 100%;
+    height: clamp(2rem, 10vw, 6rem);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wave {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 200vw;
+    display: flex;
+    animation: wave-slide 20s infinite linear;
+  }
+
+  .wave svg {
+    width: 100%;
+  }
+
+  .wave-front use {
+    fill: #ebf8ff;
+  }
+
+  .wave-back {
+    animation-delay: -7s;
+    animation-duration: 30s;
+  }
+  .wave-back use {
+    fill: #c7ebfc;
+  }
+
+  @keyframes wave-slide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>

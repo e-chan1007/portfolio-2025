@@ -7,10 +7,12 @@
 		"preview": "astro preview"
 	},
 	"devDependencies": {
+		"@iconify/json": "^2.2.350",
+		"@inlang/paraglide-js": "2.1.0",
 		"@types/bun": "latest",
 		"sass-embedded": "^1.89.2",
 		"typescript": "^5.8.3",
-		"@inlang/paraglide-js": "2.1.0"
+		"unplugin-icons": "^22.1.0"
 	},
 	"packageManager": "bun@1.2.16",
 	"dependencies": {

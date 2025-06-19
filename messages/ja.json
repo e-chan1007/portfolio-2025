@@ -1,4 +1,9 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
-  "title": "e-chan.me(日本語)"
+  "title": "いーちゃん",
+  "subtitle": "Welcome to e-chan.me",
+  "description": {
+    "name": "Sota Iguchi",
+    "role": "電気通信大学 情報理工学域Ⅰ類 メディア情報学プログラム 3年"
+  }
 }

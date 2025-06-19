@@ -1,8 +1,10 @@
 ---
+import Hero from "@/components/top/Hero.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import * as m from "@/paraglide/messages.js";
+import Section from "@/components/top/Section.astro";
 ---
 
 <BaseLayout>
-  <h1>{m.title()}</h1>
+  <Hero />
+  <Section />
 </BaseLayout>
