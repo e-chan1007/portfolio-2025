@@ -1,9 +1,31 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "title": "e-chan1007",
-  "subtitle": "Welcome to e-chan.me",
-  "description": {
-    "name": "Sota Iguchi",
-    "role": "The University of Electro-Communications"
+  "hero": {
+    "description": {
+      "name": "Sota Iguchi",
+      "role": "Undergraduate student at the University of Electro-Communications"
+    },
+    "scroll": "Scroll down"
+  },
+  "about": {
+    "title": "About me",
+    "description": "I am a third-year student in the Media Science and Engineering Program at the University of Electro-Communications in Japan. I am majoring in informatics and computer engineering. I began programming at the age of ten. I am interested in web development, particularly front-end development. I also enjoy working with various programming languages and frameworks."
+  },
+  "works": {
+    "title": "Works",
+    "description": "Here are some of my works. You can find more on my GitHub."
+  },
+  "articles": {
+    "title": "Articles",
+    "description": "I write articles about my interests and experiences."
+  },
+  "prizes": {
+    "title": "Prizes",
+    "description": "I have received several awards for my work in programming and development."
+  },
+  "certifications": {
+    "title": "Certifications",
+    "description": "I have obtained various certifications in programming and related fields."
   }
 }

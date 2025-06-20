@@ -1,9 +1,31 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "title": "いーちゃん",
-  "subtitle": "Welcome to e-chan.me",
-  "description": {
-    "name": "Sota Iguchi",
-    "role": "電気通信大学 情報理工学域Ⅰ類 メディア情報学プログラム 3年"
+  "hero": {
+    "description": {
+      "name": "Sota Iguchi",
+      "role": "電気通信大学 情報理工学域"
+    },
+    "scroll": "Scroll down"
+  },
+  "about": {
+    "title": "About me",
+    "description": "電気通信大学 情報理工学域Ⅰ類の3年生で、メディア情報学プログラムに所属しています。10歳からプログラミングを始めました。様々なプログラミング言語やフレームワークを使いながら、Web開発のうち特にフロントエンド開発を中心として広範囲にわたる技術課題に取り組んでいます。"
+  },
+  "works": {
+    "title": "制作物",
+    "description": "制作物の一部を紹介します。"
+  },
+  "articles": {
+    "title": "記事",
+    "description": "私の興味や経験をもとにした記事を書いています。"
+  },
+  "prizes": {
+    "title": "表彰",
+    "description": "プログラミングや開発に関する賞を受賞しました。"
+  },
+  "certifications": {
+    "title": "資格・検定",
+    "description": "技術分野を中心に様々な資格を取得しています。"
   }
 }

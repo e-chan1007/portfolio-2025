@@ -1,10 +1,19 @@
 ---
 import Hero from "@/components/top/Hero.astro";
+import AboutSection from "@/components/top/sections/AboutSection.astro";
+import ArticlesSection from "@/components/top/sections/ArticlesSection.astro";
+import CertificationsSection from "@/components/top/sections/CertificationsSection.astro";
+import PrizesSection from "@/components/top/sections/PrizesSection.astro";
+import WorksSection from "@/components/top/sections/WorksSection.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Section from "@/components/top/Section.astro";
+import { m } from "@/paraglide/messages.js";
 ---
 
-<BaseLayout>
+<BaseLayout title={m["title"]()} description={m["about.description"]()}>
   <Hero />
-  <Section />
+  <AboutSection />
+  <WorksSection />
+  <ArticlesSection />
+  <PrizesSection />
+  <CertificationsSection />
 </BaseLayout>

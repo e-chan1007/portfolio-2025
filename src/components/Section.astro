@@ -1,0 +1,18 @@
+<section class="section" {...Astro.props}>
+  <slot />
+</section>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .section {
+    padding-block: 4rem;
+
+    &:nth-of-type(odd) {
+      background-color: var.$color-primary-100;
+    }
+    &:nth-of-type(even) {
+      background-color: var.$color-primary-200;
+    }
+  }
+</style>

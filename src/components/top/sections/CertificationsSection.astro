@@ -1,0 +1,14 @@
+---
+import Section from "@/components/Section.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
+import Container from "@/components/Container.astro";
+import { m } from "@/paraglide/messages.js";
+import Paragraph from "@/components/Paragraph.astro";
+---
+
+<Section id="about">
+  <Container>
+    <SectionTitle>{m["certifications.title"]()}</SectionTitle>
+    <Paragraph centering>{m["certifications.description"]()}</Paragraph>
+  </Container>
+</Section>

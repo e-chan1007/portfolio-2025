@@ -18,6 +18,8 @@
 </div>
 
 <style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
   .waves-container {
     width: 100%;
     height: clamp(2rem, 10vw, 6rem);
@@ -40,7 +42,7 @@
   }
 
   .wave-front use {
-    fill: #ebf8ff;
+    fill: var.$color-primary-200;
   }
 
   .wave-back {
@@ -48,7 +50,7 @@
     animation-duration: 30s;
   }
   .wave-back use {
-    fill: #c7ebfc;
+    fill: var.$color-primary-300;
   }
 
   @keyframes wave-slide {

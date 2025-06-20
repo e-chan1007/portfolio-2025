@@ -1,0 +1,16 @@
+<h2 class="section-title">
+  <slot />
+</h2>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var.$color-text-primary;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+</style>

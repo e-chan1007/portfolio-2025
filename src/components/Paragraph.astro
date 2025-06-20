@@ -1,0 +1,47 @@
+---
+interface Props {
+  centering?: boolean;
+  [key: string]: any;
+}
+
+const { centering = false } = Astro.props;
+---
+
+<p
+  class:list={["paragraph", centering && "center", Astro.props.class]}
+  {...Astro.props}
+>
+  <slot />
+</p>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .paragraph {
+    color: var.$color-text;
+    margin-bottom: 1.5rem;
+  }
+
+  .center {
+    text-indent: 0;
+    text-align: center;
+  }
+
+  html[lang="ja"] .paragraph {
+    letter-spacing: 0.075em;
+    line-height: 2rem;
+
+    &:not(.center) {
+      text-indent: 1rem;
+    }
+  }
+
+  html[lang="en"] .paragraph {
+    letter-spacing: 0.05em;
+    line-height: 2rem;
+
+    &:not(.center) {
+      text-indent: 2.5rem;
+    }
+  }
+</style>

@@ -3,48 +3,57 @@ import HeroIcon from "./HeroIcon.astro";
 import * as m from "@/paraglide/messages.js";
 import HeroWaves from "./HeroWaves.astro";
 
-import ChevronDoubleDown from "~icons/heroicons/chevron-double-down-20-solid";
+import Container from "../Container.astro";
+import HeroScrollChevron from "./HeroScrollChevron.astro";
 ---
 
-<section>
+<section class="hero-wrapper">
   <header class="hero">
-    <div class="hero-container">
-      <HeroIcon />
-      <h1 class="title">{m.title()}</h1>
-      <p class="description">{m["description.name"]()}</p>
-      <p class="role">
-        {
-          m["description.role"]()
-            .split(" ")
-            .map((text) => <span class="role-item">{text}</span>)
-        }
-      </p>
-    </div>
-    <div class="chevron-container">
-      <ChevronDoubleDown class="chevron-icon" />
-    </div>
-    <HeroWaves />
+    <Container>
+      <div class="hero-container">
+        <HeroIcon />
+        <h1 class="title">{m.title()}</h1>
+        <p class="description">{m["hero.description.name"]()}</p>
+        <p class="role">
+          {
+            m["hero.description.role"]()
+              .split(" ")
+              .map((text) => <span class="role-item">{text}</span>)
+          }
+        </p>
+      </div>
+    </Container>
   </header>
+  <HeroScrollChevron />
+  <HeroWaves />
 </section>
 
 <style lang="scss">
   @use "@/assets/styles/variables" as var;
 
+  .hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .hero-container {
     min-height: calc(90dvh - clamp(2rem, 10vw, 6rem));
-    padding: 4vh 0 2vh;
+    padding: 4vh 2rem 2vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    letter-spacing: 0.02em;
   }
 
   .title {
     font-size: 3rem;
     font-weight: 700;
     text-align: center;
-    color: var.$color-primary;
+    letter-spacing: 0.05em;
+    color: var.$color-text-primary;
   }
 
   .subtitle {
@@ -59,25 +68,5 @@ import ChevronDoubleDown from "~icons/heroicons/chevron-double-down-20-solid";
     flex-flow: row wrap;
     justify-content: center;
     gap: 0.25rem;
-  }
-
-  .chevron-container {
-    display: grid;
-    place-items: center;
-  }
-
-  .chevron-icon {
-    font-size: 1.5rem;
-    animation: chevron-bounce 4s ease-in-out infinite;
-  }
-
-  @keyframes chevron-bounce {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(10px);
-    }
   }
 </style>

@@ -1,0 +1,39 @@
+---
+import * as m from "@/paraglide/messages.js";
+
+import ChevronDoubleDown from "~icons/heroicons/chevron-double-down-20-solid";
+---
+
+<a class="chevron-container" href="#about">
+  <p class="scroll-suggestion">
+    {m["hero.scroll"]()}
+  </p>
+  <ChevronDoubleDown class="chevron-icon" />
+</a>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .chevron-container {
+    width: fit-content;
+    display: grid;
+    place-items: center;
+    animation: chevron-bounce 4s ease-in-out infinite;
+    color: var.$color-primary-700;
+    text-decoration: none;
+  }
+
+  .chevron-icon {
+    font-size: 1.5rem;
+  }
+
+  @keyframes chevron-bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+</style>

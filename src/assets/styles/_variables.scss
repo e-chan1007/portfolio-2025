@@ -1,8 +1,22 @@
 $color-black: #333;
 $color-white: #fff;
-$color-primary: #007bff;
 $color-secondary: #34495e;
 $color-tertiary: #f19c20;
 
 $color-text: $color-black;
 $color-background: $color-white;
+
+$color-primary-100: #f6fcff;
+$color-primary-200: #daf2fd;
+$color-primary-300: #c7ecfc;
+$color-primary-400: #85a4ff;
+$color-primary-500: #5c8fff;
+$color-primary-600: #007bff;
+$color-primary-700: #1965d0;
+$color-primary-800: #2051a2;
+$color-primary-900: #1e417f;
+$color-text-primary: $color-primary-900;
+
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+$shadow-md: 0 3px 6px rgba(0, 0, 0, 0.3);
+$shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.4);
