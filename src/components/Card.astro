@@ -1,11 +1,11 @@
 ---
-import type { HTMLTag } from "astro/types";
+import type { HTMLTag, Polymorphic } from "astro/types";
 
-interface Props {
-  as?: HTMLTag;
+type Props<Tag extends HTMLTag = "div"> = Polymorphic<{
+  as: Tag;
+}> & {
   noPadding?: boolean;
-  [key: string]: any;
-}
+};
 
 const { as: Component = "div", noPadding = false, ...props } = Astro.props;
 ---
@@ -19,9 +19,11 @@ const { as: Component = "div", noPadding = false, ...props } = Astro.props;
 
   .card {
     background-color: var.$color-background;
+    border: 1px solid var.$color-border;
     border-radius: 0.5rem;
     box-shadow: var.$shadow-sm;
     transition: box-shadow 0.2s ease-in-out;
+    overflow: hidden;
 
     &.pad {
       padding: 2rem;

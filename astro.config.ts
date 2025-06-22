@@ -6,9 +6,11 @@ import Icons from "unplugin-icons/vite";
 import inlangSettings from "./project.inlang/settings.json" with { type: "json" };
 
 export default defineConfig({
-  site: process.env.SITE_URL || "https://www.e-chan.me/",
-  output: "server",
-  adapter: cloudflare(),
+  site: import.meta.env.SITE_URL || "https://www.e-chan.me/",
+  output: "static",
+  adapter: cloudflare({
+    imageService: "compile"
+  }),
   i18n: {
     defaultLocale: inlangSettings.baseLocale,
     locales: inlangSettings.locales,

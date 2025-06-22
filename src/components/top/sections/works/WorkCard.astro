@@ -1,0 +1,180 @@
+---
+import Card from "@/components/Card.astro";
+import { getGitHubStarCount } from "@/utils/github";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import GitHubIcon from "~icons/octicon/mark-github-24";
+import StarIcon from "~icons/heroicons/star-solid";
+import { Picture } from "astro:assets";
+
+interface Props {
+  entry: CollectionEntry<"works">;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+
+let starCount = 0;
+
+if (data.github) {
+  starCount = await getGitHubStarCount(data.github);
+}
+
+const { Content } = await render(entry);
+---
+
+<Card as="section" class="work-card" noPadding>
+  {
+    data.cover && (
+      <div class="cover">
+        <Picture src={data.cover} formats={["avif", "webp"]} alt={data.title} />
+      </div>
+    )
+  }
+  <h3>{data.title}</h3>
+  <time class="detail-text">{data.date}</time>
+  {
+    data.github && (
+      <>
+        <GitHubIcon class="detail-icon github-repo-icon" />
+        <p class="detail-text github-repo">{data.github}</p>
+      </>
+    )
+  }
+  {
+    starCount > 0 && (
+      <>
+        <StarIcon class="detail-icon github-star-icon" />
+        <p class="detail-text github-star-count">{starCount} stars</p>
+      </>
+    )
+  }
+  <main class="content">
+    <Content />
+  </main>
+  <footer>
+    {
+      data.link.url && (
+        <a
+          href={data.link.url}
+          class="button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {data.link.label || "View Project"}
+        </a>
+      )
+    }
+  </footer>
+</Card>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .work-card {
+    height: 100%;
+    display: grid;
+    grid-template:
+      "cover cover cover cover" auto
+      "_l _gutter_1 _gutter_1 _r" 0.75rem
+      "_l title title _r" auto
+      "_l date date _r" auto
+      "_l github-repo-icon github-repo _r" auto
+      "_l github-star-icon github-star-count _r" auto
+      "_l _gutter_2 _gutter_2 _r" 0.75rem
+      "_l content content _r" 1fr
+      "_l _gutter_3 _gutter_3 _r" 0.75rem
+      "_l footer footer _r" auto
+      "_l _gutter_4 _gutter_4 _r" 0.75rem / 1rem auto 1fr 1rem;
+    gap: 0.25rem 0.5rem;
+
+    .cover {
+      display: block;
+      grid-area: cover;
+      border-bottom: 1px solid var.$color-border;
+
+      img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.2s ease-in-out;
+      }
+    }
+
+    &:hover {
+      .cover img {
+        transform: scale(1.025);
+      }
+    }
+
+    .icon {
+      grid-area: icon;
+      width: 1.5rem;
+      height: 1.5rem;
+      color: var.$color-text-primary;
+      align-self: center;
+      transform: translateY(0.075rem);
+    }
+
+    h3 {
+      grid-area: title;
+      font-size: 1.25rem;
+      color: var.$color-text-primary;
+    }
+
+    time {
+      grid-area: date;
+      display: block;
+    }
+
+    .detail-icon {
+      width: 1rem;
+      height: 1rem;
+      color: var.$color-text-secondary;
+      align-self: center;
+    }
+
+    .detail-text {
+      font-size: 0.875rem;
+      color: var.$color-text-secondary;
+    }
+
+    .github-repo-icon {
+      grid-area: github-repo-icon;
+    }
+
+    .github-repo {
+      grid-area: github-repo;
+    }
+
+    .github-star-icon {
+      grid-area: github-star-icon;
+    }
+
+    .github-star-count {
+      grid-area: github-star-count;
+    }
+
+    .content {
+      grid-area: content;
+    }
+
+    footer {
+      grid-area: footer;
+      display: flex;
+      justify-content: center;
+
+      .button {
+        padding: 0.5rem 1rem;
+        background-color: var.$color-primary-700;
+        color: var.$color-text-inverse;
+        text-decoration: none;
+        border-radius: 0.25rem;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: var.$color-primary-600;
+        }
+      }
+    }
+  }
+</style>

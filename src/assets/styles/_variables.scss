@@ -1,4 +1,5 @@
 $color-black: #333;
+$color-lightgray: #e0e0e0;
 $color-gray: #888;
 $color-white: #fff;
 $color-secondary: #34495e;
@@ -19,6 +20,8 @@ $color-primary-900: #1e417f;
 
 $color-text-primary: $color-primary-900;
 $color-text-secondary: $color-gray;
+$color-text-inverse: $color-white;
+$color-border: $color-lightgray;
 
 $shadow-sm: 0 2px 2px rgba(0, 0, 0, 0.1);
 $shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);

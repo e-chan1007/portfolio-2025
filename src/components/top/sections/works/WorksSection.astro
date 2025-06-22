@@ -1,16 +1,16 @@
 ---
+import Container from "@/components/Container.astro";
+import Paragraph from "@/components/Paragraph.astro";
 import Section from "@/components/Section.astro";
 import SectionTitle from "@/components/SectionTitle.astro";
-import Container from "@/components/Container.astro";
 import { m } from "@/paraglide/messages.js";
 import { getLocale } from "@/paraglide/runtime";
-import Paragraph from "@/components/Paragraph.astro";
 import { getCollection } from "astro:content";
-import CertificationCard from "./CertificationCard.astro";
+import WorkCard from "./WorkCard.astro";
 
 const locale = getLocale();
 
-const certifications = await getCollection("certifications", ({ id }) => {
+const works = await getCollection("works", ({ id }) => {
   const [lang] = id.split("/");
   return lang === locale;
 });
@@ -18,13 +18,13 @@ const certifications = await getCollection("certifications", ({ id }) => {
 
 <Section id="about">
   <Container>
-    <SectionTitle>{m["certifications.title"]()}</SectionTitle>
-    <Paragraph centering>{m["certifications.description"]()}</Paragraph>
-    <ul class="certifications-list">
+    <SectionTitle>{m["works.title"]()}</SectionTitle>
+    <Paragraph centering>{m["works.description"]()}</Paragraph>
+    <ul class="works-list">
       {
-        certifications.map((certification) => (
+        works.map((work) => (
           <li>
-            <CertificationCard entry={certification} />
+            <WorkCard entry={work} />
           </li>
         ))
       }
@@ -35,10 +35,10 @@ const certifications = await getCollection("certifications", ({ id }) => {
 <style lang="scss">
   @use "@/assets/styles/variables" as var;
 
-  .certifications-list {
+  .works-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    align-items: center;
+    align-items: stretch;
     gap: 2rem;
     list-style: none;
     padding: 0;
