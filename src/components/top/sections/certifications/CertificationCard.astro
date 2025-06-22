@@ -1,0 +1,61 @@
+---
+import Card from "@/components/Card.astro";
+import type { CollectionEntry } from "astro:content";
+import CheckBadgeIcon from "~icons/heroicons/check-badge-20-solid";
+
+interface Props {
+  data: CollectionEntry<"certifications">;
+}
+
+const {
+  data: { data },
+} = Astro.props;
+---
+
+<Card class="certification-card">
+  <CheckBadgeIcon class="icon" />
+  <h3>{data.name}</h3>
+  {data.date && <time>{data.date}</time>}
+  <p>{data.issuer}</p>
+</Card>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .certification-card {
+    display: grid;
+    grid-template:
+      "icon title" auto
+      "_ date" auto
+      "_ issuer" auto / auto 1fr;
+    gap: 0.25rem;
+
+    .icon {
+      grid-area: icon;
+      width: 1.5rem;
+      height: 1.5rem;
+      color: var.$color-text-primary;
+      align-self: center;
+      transform: translateY(0.075rem);
+    }
+
+    h3 {
+      grid-area: title;
+      font-size: 1.25rem;
+      color: var.$color-text-primary;
+    }
+
+    time {
+      grid-area: date;
+      display: block;
+      font-size: 0.875rem;
+      color: var.$color-text-secondary;
+    }
+
+    p {
+      grid-area: issuer;
+      font-size: 0.875rem;
+      color: var.$color-text-secondary;
+    }
+  }
+</style>

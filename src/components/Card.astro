@@ -1,0 +1,34 @@
+---
+import type { HTMLTag } from "astro/types";
+
+interface Props {
+  as?: HTMLTag;
+  noPadding?: boolean;
+  [key: string]: any;
+}
+
+const { as: Component = "div", noPadding = false, ...props } = Astro.props;
+---
+
+<Component class:list={["card", { pad: !noPadding }, props.class]} {...props}>
+  <slot />
+</Component>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .card {
+    background-color: var.$color-background;
+    border-radius: 0.5rem;
+    box-shadow: var.$shadow-sm;
+    transition: box-shadow 0.2s ease-in-out;
+
+    &.pad {
+      padding: 2rem;
+    }
+  }
+
+  .card:hover {
+    box-shadow: var.$shadow-md;
+  }
+</style>

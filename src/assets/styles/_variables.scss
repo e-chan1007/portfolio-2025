@@ -1,4 +1,5 @@
 $color-black: #333;
+$color-gray: #888;
 $color-white: #fff;
 $color-secondary: #34495e;
 $color-tertiary: #f19c20;
@@ -15,8 +16,10 @@ $color-primary-600: #007bff;
 $color-primary-700: #1965d0;
 $color-primary-800: #2051a2;
 $color-primary-900: #1e417f;
-$color-text-primary: $color-primary-900;
 
-$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
-$shadow-md: 0 3px 6px rgba(0, 0, 0, 0.3);
-$shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.4);
+$color-text-primary: $color-primary-900;
+$color-text-secondary: $color-gray;
+
+$shadow-sm: 0 2px 2px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 6px 8px rgba(0, 0, 0, 0.25);
