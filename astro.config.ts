@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 
 import cloudflare from "@astrojs/cloudflare";
+import mdx from "@astrojs/mdx";
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import Icons from "unplugin-icons/vite";
 import inlangSettings from "./project.inlang/settings.json" with { type: "json" };
@@ -11,6 +12,9 @@ export default defineConfig({
   adapter: cloudflare({
     imageService: "compile"
   }),
+  integrations: [
+    mdx()
+  ],
   i18n: {
     defaultLocale: inlangSettings.baseLocale,
     locales: inlangSettings.locales,

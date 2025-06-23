@@ -1,0 +1,31 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+type Props = HTMLAttributes<"a">;
+---
+
+<a class:list={["button-link", Astro.props.class]} {...Astro.props}>
+  <slot />
+</a>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .button-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var.$color-background-primary-link;
+    color: var.$color-text-inverse;
+    border: none;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: var.$color-background-primary-link-hover;
+    }
+  }
+</style>

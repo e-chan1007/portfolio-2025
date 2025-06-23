@@ -19,6 +19,13 @@ const { centering = false } = Astro.props;
 
   .paragraph {
     color: var.$color-text;
+  }
+
+  .paragraph:has(+ .paragraph) {
+    margin-bottom: 0.25rem;
+  }
+
+  .paragraph:has(+ :not(.paragraph)) {
     margin-bottom: 1.5rem;
   }
 

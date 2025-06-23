@@ -3,13 +3,38 @@ import Card from "@/components/Card.astro";
 import { getGitHubStarCount } from "@/utils/github";
 import type { CollectionEntry } from "astro:content";
 import { render } from "astro:content";
+
+import noImage from "@/assets/images/no-image.webp";
+
+import CalendarIcon from "~icons/heroicons/calendar-solid";
 import GitHubIcon from "~icons/octicon/mark-github-24";
 import StarIcon from "~icons/heroicons/star-solid";
+import CommandlineIcon from "~icons/heroicons/command-line-solid";
+import DesktopIcon from "~icons/heroicons/computer-desktop-solid";
+import PhoneIcon from "~icons/heroicons/device-phone-mobile-solid";
+import PuzzleIcon from "~icons/heroicons/puzzle-piece-solid";
+import LibraryIcon from "~icons/fluent/library-32-filled";
+import ScriptIcon from "~icons/proicons/script";
+import WindowIcon from "~icons/heroicons/window-solid";
+import ExternalLinkIcon from "~icons/heroicons/arrow-top-right-on-square-solid";
+
 import { Picture } from "astro:assets";
+import Paragraph from "@/components/Paragraph.astro";
+import ButtonLink from "@/components/ButtonLink.astro";
 
 interface Props {
   entry: CollectionEntry<"works">;
 }
+
+const icons = {
+  commandline: CommandlineIcon,
+  desktop: DesktopIcon,
+  library: LibraryIcon,
+  phone: PhoneIcon,
+  puzzle: PuzzleIcon,
+  script: ScriptIcon,
+  window: WindowIcon
+} as const satisfies Record<CollectionEntry<"works">["data"]["icon"], astroHTML.JSX.Element>;
 
 const { entry } = Astro.props;
 const { data } = entry;
@@ -20,24 +45,24 @@ if (data.github) {
   starCount = await getGitHubStarCount(data.github);
 }
 
+const Icon = icons[data.icon];
 const { Content } = await render(entry);
 ---
 
 <Card as="section" class="work-card" noPadding>
-  {
-    data.cover && (
-      <div class="cover">
-        <Picture src={data.cover} formats={["avif", "webp"]} alt={data.title} />
-      </div>
-    )
-  }
+  <div class="cover">
+    <Picture src={data.cover || noImage} formats={["avif", "webp"]} alt={data.title} />
+  </div>
+
+  <Icon class="icon" />
   <h3>{data.title}</h3>
-  <time class="detail-text">{data.date}</time>
+  <CalendarIcon class="detail-icon date-icon" />
+  <time class="detail-text date">{data.date}</time>
   {
     data.github && (
       <>
         <GitHubIcon class="detail-icon github-repo-icon" />
-        <p class="detail-text github-repo">{data.github}</p>
+        <a href={`https://github.com/${data.github}`} target="_blank" class="detail-text github-repo">{data.github}</a>
       </>
     )
   }
@@ -50,20 +75,24 @@ const { Content } = await render(entry);
     )
   }
   <main class="content">
-    <Content />
+    <Content
+      components={{
+        p: Paragraph,
+      }}
+    />
   </main>
   <footer>
     {
-      data.link.url && (
-        <a
-          href={data.link.url}
-          class="button"
+      data.link.map(link => (
+        <ButtonLink
+          href={link.url}
           target="_blank"
           rel="noopener noreferrer"
         >
-          {data.link.label || "View Project"}
-        </a>
-      )
+          {link.label}
+          <ExternalLinkIcon />
+        </ButtonLink>
+      ))
     }
   </footer>
 </Card>
@@ -77,16 +106,15 @@ const { Content } = await render(entry);
     grid-template:
       "cover cover cover cover" auto
       "_l _gutter_1 _gutter_1 _r" 0.75rem
-      "_l title title _r" auto
-      "_l date date _r" auto
+      "_l title-icon title _r" auto
+      "_l date-icon date _r" auto
       "_l github-repo-icon github-repo _r" auto
       "_l github-star-icon github-star-count _r" auto
-      "_l _gutter_2 _gutter_2 _r" 0.75rem
       "_l content content _r" 1fr
-      "_l _gutter_3 _gutter_3 _r" 0.75rem
+      "_l _gutter_2 _gutter_2 _r" 0.75rem
       "_l footer footer _r" auto
-      "_l _gutter_4 _gutter_4 _r" 0.75rem / 1rem auto 1fr 1rem;
-    gap: 0.25rem 0.5rem;
+      "_l _gutter_3 _gutter_3 _r" 0.75rem / 1rem auto 1fr 1rem;
+    gap: 0.375rem 0.5rem;
 
     .cover {
       display: block;
@@ -94,24 +122,19 @@ const { Content } = await render(entry);
       border-bottom: 1px solid var.$color-border;
 
       img {
+        display: block;
         width: 100%;
         height: auto;
-        transition: transform 0.2s ease-in-out;
-      }
-    }
-
-    &:hover {
-      .cover img {
-        transform: scale(1.025);
+        aspect-ratio: 3 / 2;
       }
     }
 
     .icon {
-      grid-area: icon;
+      grid-area: title-icon;
       width: 1.5rem;
       height: 1.5rem;
       color: var.$color-text-primary;
-      align-self: center;
+      placce-self: center;
       transform: translateY(0.075rem);
     }
 
@@ -121,7 +144,11 @@ const { Content } = await render(entry);
       color: var.$color-text-primary;
     }
 
-    time {
+    .date-icon {
+      grid-area: date-icon;
+    }
+
+    .date {
       grid-area: date;
       display: block;
     }
@@ -130,7 +157,7 @@ const { Content } = await render(entry);
       width: 1rem;
       height: 1rem;
       color: var.$color-text-secondary;
-      align-self: center;
+      place-self: center;
     }
 
     .detail-text {
@@ -144,6 +171,12 @@ const { Content } = await render(entry);
 
     .github-repo {
       grid-area: github-repo;
+      color: var.$color-text-link-secondary;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var.$color-text-link-secondary-hover;
+      }
     }
 
     .github-star-icon {
@@ -161,20 +194,9 @@ const { Content } = await render(entry);
     footer {
       grid-area: footer;
       display: flex;
+      flex-flow: row wrap;
       justify-content: center;
-
-      .button {
-        padding: 0.5rem 1rem;
-        background-color: var.$color-primary-700;
-        color: var.$color-text-inverse;
-        text-decoration: none;
-        border-radius: 0.25rem;
-        transition: background-color 0.3s;
-
-        &:hover {
-          background-color: var.$color-primary-600;
-        }
-      }
+      gap: 0.5rem;
     }
   }
 </style>

@@ -19,8 +19,13 @@ import ChevronDoubleDown from "~icons/heroicons/chevron-double-down-solid";
     display: grid;
     place-items: center;
     animation: chevron-bounce 4s ease-in-out infinite;
-    color: var.$color-primary-700;
+    color: var.$color-text-link;
     text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var.$color-text-link-hover;
+    }
   }
 
   .chevron-icon {

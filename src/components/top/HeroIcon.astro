@@ -1,6 +1,11 @@
-<div class="icon-wrapper">
+---
+import icon from "@/assets/images/icon.webp";
+import { Picture } from "astro:assets";
+---
+
+<div class="icon-wrapper" aria-hidden="true">
   <div class="icon-container">
-    <img src="/images/icon.webp" alt="" class="icon" />
+    <Picture src={icon} formats={["avif", "webp"]} alt="" class="icon" loading="eager" />
   </div>
 </div>
 
@@ -63,6 +68,7 @@
 
   .icon {
     width: 105%;
+    height: 105%;
     aspect-ratio: 1;
     transform-origin: top center;
     animation: icon-rotate 4s ease-in-out infinite;

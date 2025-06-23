@@ -2,7 +2,7 @@ import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 
 const certifications = defineCollection({
-  loader: glob({ pattern: "*/certifications/*.yml", base: "./src/data/" }),
+  loader: glob({ pattern: "**/*.yml", base: "./src/data/certifications" }),
   schema: z.object({
     title: z.string(),
     issuer: z.string(),
@@ -11,17 +11,18 @@ const certifications = defineCollection({
 });
 
 const works = defineCollection({
-  loader: glob({ pattern: "*/works/*.md", base: "./src/data/" }),
+  loader: glob({ pattern: "**/*.mdx", base: "./src/data/works" }),
   schema: ({ image }) => z.object({
     title: z.string(),
+    icon: z.enum(["commandline", "desktop", "library", "phone", "puzzle", "script", "window"]),
     date: z.string().optional(),
     github: z.string().optional(),
     keywords: z.array(z.string()).optional(),
     cover: image().optional(),
-    link: z.object({
-      label: z.string().optional(),
-      url: z.string().optional()
-    })
+    link: z.array(z.object({
+      label: z.string(),
+      url: z.string()
+    }))
   })
 });
 
