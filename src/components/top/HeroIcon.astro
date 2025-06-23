@@ -48,6 +48,10 @@ import { Picture } from "astro:assets";
     border-radius: 100%;
 
     animation: breathing-icon-scale 6s ease-in-out infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
   }
 
   @keyframes breathing-icon-scale {
@@ -67,10 +71,11 @@ import { Picture } from "astro:assets";
   }
 
   .icon {
-    width: 105%;
-    height: 105%;
+    width: 100%;
+    height: 100%;
     aspect-ratio: 1;
     transform-origin: top center;
+    transform: scale(1.05);
     animation: icon-rotate 4s ease-in-out infinite;
     filter: drop-shadow(var.$shadow-md);
   }

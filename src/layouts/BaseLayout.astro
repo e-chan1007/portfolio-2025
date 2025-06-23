@@ -38,5 +38,11 @@ const locale = getLocale();
   * {
     box-sizing: border-box;
     margin: 0;
+
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none !important;
+      transition: none !important;
+    }
   }
 </style>
