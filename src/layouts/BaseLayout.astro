@@ -16,10 +16,30 @@ const locale = getLocale();
 <html lang={locale}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="stylesheet" href={fontCSS} media="print" onload="this.media='all'" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content={new URL(Astro.url.pathname, import.meta.env.SITE_URL)}
+    />
+    <meta
+      property="og:image"
+      content={new URL("/images/ogp.png", import.meta.env.SITE_URL)}
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="stylesheet"
+      href={fontCSS}
+      media="print"
+      onload="this.media='all'"
+    />
     <noscript>
       <link rel="stylesheet" href={fontCSS} media="screen" />
     </noscript>
