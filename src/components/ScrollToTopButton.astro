@@ -31,8 +31,8 @@ import { Icon } from "astro-icon/components";
 
   .scroll-to-top {
     position: fixed;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
+    right: calc(env(safe-area-inset-right, 0px) + 1rem);
     display: inline-flex;
     align-items: center;
     justify-content: center;

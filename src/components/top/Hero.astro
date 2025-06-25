@@ -1,10 +1,9 @@
 ---
-import HeroIcon from "./HeroIcon.astro";
 import * as m from "@/paraglide/messages.js";
-import HeroWaves from "./HeroWaves.astro";
-
 import Container from "../Container.astro";
+import HeroIcon from "./HeroIcon.astro";
 import HeroScrollChevron from "./HeroScrollChevron.astro";
+import HeroWaves from "./HeroWaves.astro";
 ---
 
 <section class="hero-wrapper">
@@ -38,7 +37,7 @@ import HeroScrollChevron from "./HeroScrollChevron.astro";
   }
 
   .hero-container {
-    min-height: calc(90dvh - clamp(2rem, 10vw, 6rem));
+    min-height: calc(90dvh - clamp(2rem, 10vw, 6rem) - env(safe-area-inset-bottom, 0px));
     padding: 4vh 2rem 2vh;
     display: flex;
     flex-direction: column;
