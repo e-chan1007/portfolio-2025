@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+import Card from "@/components/Card.astro";
+
+interface Props {
+  data: CollectionEntry<"skills">["data"];
+}
+
+const { data } = Astro.props as Props;
+---
+
+<Card noPadding class="skill-item" title={data.label}>
+  <Icon name={data.icon} class="skill-icon" />
+</Card>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .skill-item {
+    aspect-ratio: 1;
+    width: 4rem;
+    display: grid;
+    place-items: center;
+  }
+
+  .skill-icon {
+    width: 2rem;
+    height: 2rem;
+    color: var.$color-text-primary;
+  }
+</style>

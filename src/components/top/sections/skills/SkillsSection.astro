@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import Container from "@/components/Container.astro";
+import Paragraph from "@/components/Paragraph.astro";
+import Section from "@/components/Section.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
+import { m } from "@/paraglide/messages.js";
+import SkillItem from "./SkillItem.astro";
+
+const skills = await getCollection("skills");
+---
+
+<Section id="about">
+  <Container>
+    <SectionTitle>{m["skills.title"]()}</SectionTitle>
+    <Paragraph centering>{m["skills.description"]()}</Paragraph>
+    <div class="skills-grid">
+      {skills.map((skill) => <SkillItem data={skill.data} />)}
+    </div>
+
+    <Paragraph centering>
+      {m["skills.metrics"]()}
+    </Paragraph>
+    <Image
+      class="metrics-image"
+      src="https://raw.githubusercontent.com/e-chan1007/e-chan1007/refs/heads/main/metrics.languages.svg"
+      alt="Language Metrics"
+      width={480}
+      height={223}
+    />
+  </Container>
+</Section>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  .metrics-image {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+</style>
