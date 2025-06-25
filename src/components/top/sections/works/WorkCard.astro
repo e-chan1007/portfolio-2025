@@ -26,12 +26,15 @@ if (data.github) {
 }
 
 const { Content } = await render(entry);
+const cover = data.cover || noImage;
 ---
 
 <Card as="section" class="work-card" noPadding>
   <div class="cover">
     <Picture
-      src={data.cover || noImage}
+      src={cover}
+      widths={[ 300, 600, 1200 ]}
+      sizes={`(max-width: 600px) 600px, 300px`}
       formats={["avif", "webp"]}
       alt={data.title}
     />

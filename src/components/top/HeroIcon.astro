@@ -1,11 +1,11 @@
 ---
-import icon from "@/assets/images/icon.webp";
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
+import icon from "@/assets/images/icon.svg";
 ---
 
 <div class="icon-wrapper" aria-hidden="true">
   <div class="icon-container">
-    <Picture src={icon} formats={["avif", "webp"]} alt="" class="icon" loading="eager" />
+    <Image src={icon} alt="" class="icon" loading="eager" />
   </div>
 </div>
 
