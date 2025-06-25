@@ -1,0 +1,65 @@
+---
+import ArrowUpIcon from "~icons/heroicons/arrow-up-solid";
+---
+
+<button id="scroll-to-top" class:list={["scroll-to-top", "hidden"]} aria-label="Scroll to top">
+  <ArrowUpIcon />
+</button>
+
+<script>
+  const button = document.getElementById("scroll-to-top")!;
+
+  button!.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+
+  // Show button when scrolled down
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      button!.classList.remove("hidden");
+    } else {
+      button!.classList.add("hidden");
+    }
+  });
+</script>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .scroll-to-top {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: var.$color-background-primary-link;
+    color: var.$color-text-inverse;
+    border: none;
+    border-radius: 10rem;
+    transition:
+      background-color 0.2s ease,
+      opacity 0.2s ease;
+    box-shadow: var.$shadow-md;
+    cursor: pointer;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    &:hover {
+      background-color: var.$color-background-primary-link-hover;
+    }
+
+    &.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+</style>
