@@ -1,7 +1,7 @@
 ---
-import Card from "@/components/Card.astro";
 import type { CollectionEntry } from "astro:content";
-import CheckBadgeIcon from "~icons/heroicons/check-badge-solid";
+import { Icon } from "astro-icon/components";
+import Card from "@/components/Card.astro";
 
 interface Props {
   entry: CollectionEntry<"certifications">;
@@ -13,7 +13,7 @@ const {
 ---
 
 <Card class="certification-card">
-  <CheckBadgeIcon class="icon" />
+  <Icon class="icon" name="fluent:checkmark-starburst-24-filled" />
   <h3>{data.title}</h3>
   {data.date && <time>{data.date}</time>}
   <p>{data.issuer}</p>

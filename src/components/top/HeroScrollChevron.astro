@@ -1,14 +1,14 @@
 ---
-import * as m from "@/paraglide/messages.js";
 
-import ChevronDoubleDown from "~icons/heroicons/chevron-double-down-solid";
+import { Icon } from "astro-icon/components";
+import * as m from "@/paraglide/messages.js";
 ---
 
 <a class="chevron-container" href="#about">
   <p class="scroll-suggestion">
     {m["hero.scroll"]()}
   </p>
-  <ChevronDoubleDown class="chevron-icon" />
+  <Icon class="chevron-icon" name="fluent:chevron-double-down-20-filled" />
 </a>
 
 <style lang="scss">

@@ -9,17 +9,19 @@
 	"devDependencies": {
 		"@astrojs/mdx": "^4.3.0",
 		"@biomejs/biome": "2.0.4",
+		"@iconify-json/fluent": "^1.2.25",
+		"@iconify-json/octicon": "^1.2.6",
 		"@iconify/json": "^2.2.350",
 		"@inlang/paraglide-js": "2.1.0",
 		"@types/bun": "latest",
 		"sass-embedded": "^1.89.2",
-		"typescript": "^5.8.3",
-		"unplugin-icons": "^22.1.0"
+		"typescript": "^5.8.3"
 	},
 	"packageManager": "bun@1.2.16",
 	"dependencies": {
 		"@astrojs/cloudflare": "^12.5.5",
 		"astro": "^5.9.4",
+		"astro-icon": "^1.1.5",
 		"octokit": "^5.0.3"
 	}
 }

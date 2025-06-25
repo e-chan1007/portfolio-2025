@@ -27,5 +27,9 @@
   "certifications": {
     "title": "Certifications",
     "description": "I have obtained various certifications in programming and related fields."
+  },
+  "history": {
+    "title": "History",
+    "description": "Here is a brief history of my activities and achievements."
   }
 }

@@ -1,0 +1,31 @@
+<div class="timeline">
+  <slot />
+</div>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: calc(var.$timeline-icon-width / 2);
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var.$color-primary-300;
+    z-index: 0;
+
+    @media screen and (width >= var.$breakpoint-lg) {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+</style>

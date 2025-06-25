@@ -1,9 +1,9 @@
 ---
-import ArrowUpIcon from "~icons/heroicons/arrow-up-solid";
+import { Icon } from "astro-icon/components";
 ---
 
 <button id="scroll-to-top" class:list={["scroll-to-top", "hidden"]} aria-label="Scroll to top">
-  <ArrowUpIcon />
+  <Icon name="fluent:arrow-upload-24-filled" />
 </button>
 
 <script>
@@ -47,6 +47,7 @@ import ArrowUpIcon from "~icons/heroicons/arrow-up-solid";
       opacity 0.2s ease;
     box-shadow: var.$shadow-md;
     cursor: pointer;
+    z-index: 1000;
 
     svg {
       width: 1.5rem;

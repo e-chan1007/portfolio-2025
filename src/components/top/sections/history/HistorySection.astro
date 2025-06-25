@@ -1,0 +1,30 @@
+---
+import { getEntry } from "astro:content";
+import Container from "@/components/Container.astro";
+import Paragraph from "@/components/Paragraph.astro";
+import Section from "@/components/Section.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
+import { m } from "@/paraglide/messages.js";
+import { getLocale } from "@/paraglide/runtime";
+import Timeline from "./Timeline.astro";
+import TimelineItem from "./TimelineItem.astro";
+
+const _history = await getEntry("history", getLocale());
+if( !_history) {
+  throw new Error("History data not found");
+}
+const history = _history.data;
+---
+
+<Section id="about">
+  <Container>
+    <SectionTitle>{m["history.title"]()}</SectionTitle>
+    <Paragraph centering>{m["history.description"]()}</Paragraph>
+    <Timeline>
+      { history.map((item) => (
+          <TimelineItem data={item} />
+        ))
+      }
+    </Timeline>
+  </Container>
+</Section>

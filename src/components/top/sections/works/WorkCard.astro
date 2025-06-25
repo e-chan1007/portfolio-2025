@@ -1,44 +1,20 @@
 ---
-import Card from "@/components/Card.astro";
-import { getGitHubStarCount } from "@/utils/github";
-import type { CollectionEntry } from "astro:content";
-import { render } from "astro:content";
-
-import noImage from "@/assets/images/no-image.webp";
-
-import CalendarIcon from "~icons/heroicons/calendar-solid";
-import GitHubIcon from "~icons/octicon/mark-github-24";
-import StarIcon from "~icons/heroicons/star-solid";
-import CommandlineIcon from "~icons/heroicons/command-line-solid";
-import DesktopIcon from "~icons/heroicons/computer-desktop-solid";
-import PhoneIcon from "~icons/heroicons/device-phone-mobile-solid";
-import PuzzleIcon from "~icons/heroicons/puzzle-piece-solid";
-import LibraryIcon from "~icons/fluent/library-32-filled";
-import ScriptIcon from "~icons/proicons/script";
-import WindowIcon from "~icons/heroicons/window-solid";
-import ExternalLinkIcon from "~icons/heroicons/arrow-top-right-on-square-solid";
 
 import { Picture } from "astro:assets";
-import Paragraph from "@/components/Paragraph.astro";
-import ButtonLink from "@/components/ButtonLink.astro";
+import type { CollectionEntry } from "astro:content";
+import { render } from "astro:content";
+import { Icon } from "astro-icon/components";
+
+import noImage from "@/assets/images/no-image.webp";
 import Badge from "@/components/Badge.astro";
+import ButtonLink from "@/components/ButtonLink.astro";
+import Card from "@/components/Card.astro";
+import Paragraph from "@/components/Paragraph.astro";
+import { getGitHubStarCount } from "@/utils/github";
 
 interface Props {
   entry: CollectionEntry<"works">;
 }
-
-const icons = {
-  commandline: CommandlineIcon,
-  desktop: DesktopIcon,
-  library: LibraryIcon,
-  phone: PhoneIcon,
-  puzzle: PuzzleIcon,
-  script: ScriptIcon,
-  window: WindowIcon,
-} as const satisfies Record<
-  CollectionEntry<"works">["data"]["icon"],
-  astroHTML.JSX.Element
->;
 
 const { entry } = Astro.props;
 const { data } = entry;
@@ -49,7 +25,6 @@ if (data.github) {
   starCount = await getGitHubStarCount(data.github);
 }
 
-const Icon = icons[data.icon];
 const { Content } = await render(entry);
 ---
 
@@ -61,14 +36,14 @@ const { Content } = await render(entry);
       alt={data.title}
     />
   </div>
-  <Icon class="icon" />
+  <Icon class="icon" name={data.icon} />
   <h3>{data.title}</h3>
-  <CalendarIcon class="detail-icon date-icon" />
+  <Icon class="detail-icon date-icon" name="fluent:calendar-24-filled" />
   <time class="detail-text date">{data.date}</time>
   {
     data.github && (
       <>
-        <GitHubIcon class="detail-icon github-repo-icon" />
+        <Icon class="detail-icon github-repo-icon" name="octicon:mark-github-16" />
         <a
           href={`https://github.com/${data.github}`}
           target="_blank"
@@ -82,7 +57,7 @@ const { Content } = await render(entry);
   {
     starCount > 0 && (
       <>
-        <StarIcon class="detail-icon github-star-icon" />
+        <Icon class="detail-icon github-star-icon" name="fluent:star-16-filled" />
         <p class="detail-text github-star-count">{starCount} stars</p>
       </>
     )
@@ -102,7 +77,7 @@ const { Content } = await render(entry);
       data.link.map((link) => (
         <ButtonLink href={link.url} target="_blank" rel="noopener noreferrer">
           {link.label}
-          <ExternalLinkIcon />
+          <Icon name="fluent:open-16-filled" />
         </ButtonLink>
       ))
     }
@@ -147,7 +122,7 @@ const { Content } = await render(entry);
       width: 1.5rem;
       height: 1.5rem;
       color: var.$color-text-primary;
-      placce-self: center;
+      place-self: center;
       transform: translateY(0.075rem);
     }
 

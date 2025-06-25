@@ -1,0 +1,23 @@
+<footer class="footer">
+  <p>
+    Last updated: <time>
+      {new Date().toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      })}
+    </time>
+  </p>
+</footer>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .footer {
+    width: 100%;
+    padding: 1rem;
+    background-color: var.$color-zinc-600;
+    color: var.$color-text-inverse;
+    text-align: center;
+    font-size: 0.875rem;
+  }

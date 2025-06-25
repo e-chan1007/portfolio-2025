@@ -24,7 +24,7 @@ $color-zinc-800: #27272a;
 $color-zinc-900: #18181b;
 
 $color-text: $color-black;
-$color-text-primary: $color-primary-900;
+$color-text-primary: $color-primary-800;
 $color-text-secondary: $color-zinc-500;
 $color-text-inverse: $color-white;
 $color-background: $color-white;
@@ -42,3 +42,8 @@ $color-text-link-secondary-hover: $color-zinc-700;
 $shadow-sm: 0 2px 2px rgba(0, 0, 0, 0.1);
 $shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);
 $shadow-lg: 0 6px 8px rgba(0, 0, 0, 0.25);
+
+$breakpoint: 700px;
+$breakpoint-lg: 1200px;
+
+$timeline-icon-width: 3rem;

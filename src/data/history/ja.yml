@@ -1,0 +1,36 @@
+- title: 電気通信大学 Ⅰ類 入学
+  date: 2023年4月
+  icon: fluent:hat-graduation-24-filled
+- title: U☆PoC ～UECアイディア実証コンテスト～ 2023
+  date: 2023年9月
+  icon: fluent:reward-24-filled
+  link: https://www.uec.ac.jp/research/venture/2023/contest_2.html
+  description: |
+    電気通信大学のアイディア実証コンテストです。
+    「模擬店における汎用的なモバイルオーダーシステムの提案」「観光地活性化の為の散策支援アプリの提案」において協賛企業賞を受賞しました。
+- title: 第74回調布祭実行委員会 技術局長
+  date: 2024年1月-2024年12月
+  icon: fluent:people-team-24-filled
+  link: https://www.chofusai.jp/
+  description: |
+    調布祭実行委員会の技術局長を務めました。
+    調布祭は毎年11月に行われる電気通信大学の学園祭です。
+- title: 基本情報技術者試験 合格
+  date: 2024年3月
+  icon: fluent:certificate-24-filled
+- title: U☆PoC ～UECアイディア実証コンテスト～ 2024
+  date: 2024年9月
+  icon: fluent:reward-24-filled
+  link: https://www.uec.ac.jp/research/venture/2024/contest_2.html
+  description: |
+    電気通信大学のアイディア実証コンテストです。
+    「uBoard - 次世代の大学ポータルアプリ」において協賛企業賞を受賞しました。
+- title: UEC Bug Bounty 2024-2025
+  date: 2025年3月
+  icon: fluent:reward-24-filled
+  link: https://www.uec.ac.jp/news/announcement/2025/20250407_6895.html
+  description: |
+    電気通信大学の学内情報セキュリティ検査コンテストで、特別賞を受賞しました。
+- title: 応用情報技術者試験 合格
+  date: 2024年4月
+  icon: fluent:certificate-24-filled

@@ -27,5 +27,9 @@
   "certifications": {
     "title": "資格・検定",
     "description": "技術分野を中心に様々な資格を取得しています。"
+  },
+  "history": {
+    "title": "経歴",
+    "description": "私の活動履歴を紹介します。"
   }
 }
