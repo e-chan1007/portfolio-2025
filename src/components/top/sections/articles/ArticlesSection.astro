@@ -1,0 +1,81 @@
+---
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import { compareDesc } from "date-fns";
+import Container from "@/components/Container.astro";
+import Paragraph from "@/components/Paragraph.astro";
+import Section from "@/components/Section.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
+import { m } from "@/paraglide/messages.js";
+import ArticleCard from "./ArticleCard.astro";
+
+const qiitaFeed = await getCollection("qiitaFeed");
+const zennFeed = await getCollection("zennFeed");
+
+const articles = [...qiitaFeed, ...zennFeed].sort((a, b) =>
+  compareDesc(a.data.published || 0, b.data.published || 0)
+).slice(0, 6);
+---
+
+<Section id="about">
+  <Container>
+    <SectionTitle>{m["articles.title"]()}</SectionTitle>
+    <Paragraph centering>{m["articles.description"]()}</Paragraph>
+    <div class="article-list">
+    {
+      articles.map((entry) => (
+          <ArticleCard entry={entry}  />
+      ))
+    }
+    </div>
+    <Paragraph centering>
+      {m["articles.readMore"]}
+    </Paragraph>
+    <div class="link-list">
+      <a href="https://qiita.com/e_chan1007" target="_blank" rel="noopener noreferrer" title={m["articles.readMoreAt"]({ platform: "Qiita" })}>
+        <Icon name="qiita" />
+      </a>
+      <a href="https://zenn.dev/e_chan1007" target="_blank" rel="noopener noreferrer" title={m["articles.readMoreAt"]({ platform: "Zenn" })}>
+        <Icon name="simple-icons:zenn" />
+      </a>
+    </div>
+  </Container>
+</Section>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .article-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .article-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .link-list {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    a {
+      font-size: 1.5rem;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      svg {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+  }
+</style>

@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { feedLoader } from "@ascorbic/feed-loader";
 import { glob } from "astro/loaders";
 
 const certifications = defineCollection({
@@ -42,8 +43,22 @@ const history = defineCollection({
   ),
 });
 
+const qiitaFeed = defineCollection({
+  loader: feedLoader({
+    url: "https://qiita.com/e_chan1007/feed",
+  }),
+});
+
+const zennFeed = defineCollection({
+  loader: feedLoader({
+    url: "https://zenn.dev/e_chan1007/feed",
+  }),
+});
+
 export const collections = {
   certifications,
   history,
   works,
+  qiitaFeed,
+  zennFeed,
 };

@@ -18,7 +18,9 @@
   },
   "articles": {
     "title": "Articles",
-    "description": "I write articles about my interests and experiences."
+    "description": "I write articles about my interests and experiences. (I am sorry, but most of them are in Japanese.)",
+    "readMore": "You can read more articles on Qiita and Zenn.",
+    "readMoreAt": "Read more at {platform}"
   },
   "prizes": {
     "title": "Prizes",

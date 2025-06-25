@@ -4,6 +4,7 @@ import Container from "../Container.astro";
 import HeroIcon from "./HeroIcon.astro";
 import HeroScrollChevron from "./HeroScrollChevron.astro";
 import HeroWaves from "./HeroWaves.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <div class="hero-wrapper">
@@ -20,6 +21,17 @@ import HeroWaves from "./HeroWaves.astro";
               .map((text) => <span class="role-item">{text}</span>)
           }
         </p>
+        <div class="link-list">
+          <a href="https://github.com/e-chan1007" target="_blank" rel="noopener noreferrer" title="GitHub">
+            <Icon name="simple-icons:github" />
+          </a>
+          <a href="https://qiita.com/e_chan1007" target="_blank" rel="noopener noreferrer" title="Qiita">
+            <Icon name="qiita" />
+          </a>
+          <a href="https://zenn.dev/e_chan1007" target="_blank" rel="noopener noreferrer" title="Zenn">
+            <Icon name="simple-icons:zenn" />
+          </a>
+        </div>
       </div>
     </Container>
   </header>
@@ -67,5 +79,30 @@ import HeroWaves from "./HeroWaves.astro";
     flex-flow: row wrap;
     justify-content: center;
     gap: 0.25rem;
+  }
+
+  .link-list {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    a {
+      font-size: 1.5rem;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.75;
+      }
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+
+    [data-icon="simple-icons:github"] {
+      color: var.$color-text;
+    }
   }
 </style>

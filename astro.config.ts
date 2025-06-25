@@ -1,13 +1,11 @@
-import { defineConfig } from "astro/config";
-
 import cloudflare from "@astrojs/cloudflare";
 import mdx from "@astrojs/mdx";
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
+import { defineConfig } from "astro/config";
+import icon from "astro-icon";
 import inlangSettings from "./project.inlang/settings.json" with {
   type: "json",
 };
-
-import icon from "astro-icon";
 
 export default defineConfig({
   site: import.meta.env.SITE_URL || "https://www.e-chan.me/",
@@ -15,7 +13,12 @@ export default defineConfig({
   adapter: cloudflare({
     imageService: "compile",
   }),
-  integrations: [mdx(), icon()],
+  integrations: [
+    mdx(),
+    icon({
+      iconDir: "src/assets/icons",
+    }),
+  ],
   i18n: {
     defaultLocale: inlangSettings.baseLocale,
     locales: inlangSettings.locales,

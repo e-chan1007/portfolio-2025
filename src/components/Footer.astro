@@ -1,12 +1,35 @@
+---
+import { format } from "date-fns";
+import { getLocale } from "@/paraglide/runtime";
+---
+
 <footer class="footer">
   <p>
     Last updated: <time>
-      {new Date().toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      })}
+      {
+        format(new Date(), "yyyy/MM/dd")
+      }
     </time>
+  </p>
+  <p>
+    <div class="lang-switch">
+      Language:
+      {
+      getLocale() === "ja" ? (
+        <span class="lang-active">Japanese</span>
+        <span>/</span>
+        <a href="/en" class="lang-switch-link">
+          English
+        </a>
+      ) : (
+        <a href="/" class="lang-switch-link">
+          Japanese
+        </a>
+        <span>/</span>
+        <span class="lang-active">English</span>
+      )
+    }
+    </div>
   </p>
 </footer>
 
@@ -18,6 +41,32 @@
     padding: 1rem 1rem calc(env(safe-area-inset-bottom, 0px) + 1rem);
     background-color: var.$color-zinc-600;
     color: var.$color-text-inverse;
-    text-align: center;
     font-size: 0.875rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
   }
+
+  .lang-switch {
+    display: inline-flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 0.25rem;
+
+    .lang-active {
+      font-weight: bold;
+    }
+
+    .lang-switch-link {
+      color: var.$color-text-inverse;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+</style>

@@ -18,7 +18,9 @@
   },
   "articles": {
     "title": "記事",
-    "description": "私の興味や経験をもとにした記事を書いています。"
+    "description": "私の興味や経験をもとにした記事を書いています。",
+    "readMore": "QiitaやZennでさらに記事を読むことができます。",
+    "readMoreAt": "{platform}でさらに読む"
   },
   "prizes": {
     "title": "表彰",

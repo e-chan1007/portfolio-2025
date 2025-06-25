@@ -1,0 +1,105 @@
+---
+import { Icon } from "astro-icon/components";
+import { format } from "date-fns";
+import Card from "@/components/Card.astro";
+
+interface ArticleEntry {
+  title: string | null;
+  published: Date | null;
+  url: string | null;
+}
+
+interface Props {
+  entry: { data: ArticleEntry };
+}
+
+const {
+  entry: { data },
+} = Astro.props;
+
+const icon = data.url?.includes("qiita.com")
+  ? "qiita"
+  : "simple-icons:zenn";
+---
+
+<Card class="article-card">
+  <Icon class="icon" name={icon} />
+  <h3 class="title">
+    <a href={data.url} target="_blank" rel="noopener noreferrer">
+      {data.title}
+      <Icon class="external-link" name="fluent:open-16-filled" />
+    </a>
+  </h3>
+  {data.published && <time>{format(data.published, "yyyy/MM/dd")}</time>}
+</Card>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .article-card {
+    display: grid;
+    grid-template:
+      "title title" auto
+      "icon date" auto / auto 1fr;
+    gap: 0.5rem 0.75rem;
+    align-items: center;
+
+    .icon {
+      grid-area: icon;
+      width: 1.5rem;
+      height: 1.5rem;
+      place-self: center;
+      transform: translateY(0.075rem);
+    }
+
+    h3 {
+      grid-area: title;
+      font-size: 1.25rem;
+      color: var.$color-text-primary;
+    }
+
+    time {
+      grid-area: date;
+      display: block;
+      font-size: 0.875rem;
+      color: var.$color-text-secondary;
+    }
+
+    p {
+      grid-area: issuer;
+      font-size: 0.875rem;
+      color: var.$color-text-secondary;
+    }
+  }
+
+  .article-card:hover a {
+    text-decoration-color: var.$color-text-link;
+
+    &:hover {
+      color: var.$color-text-link-hover;
+      text-decoration-color: var.$color-text-link-hover;
+    }
+
+    .external-link {
+      opacity: 1;
+    }
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    color: var.$color-text-primary;
+    font-weight: bold;
+
+    a {
+      color: inherit;
+      text-decoration-color: transparent;
+      transition: color 0.1s ease-in-out, text-decoration-color 0.1s ease-in-out;
+
+      .external-link {
+        opacity: 0;
+        transition: opacity 0.1s ease-in-out;
+        transform: translateY(2px);
+      }
+    }
+  }
+</style>

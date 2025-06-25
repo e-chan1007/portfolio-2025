@@ -92,8 +92,12 @@ const { data } = Astro.props;
     grid-area: content;
 
     &:hover .timeline-item-title a {
-      color: var.$color-text-link-hover;
-      text-decoration-color: var.$color-text-link-hover;
+      text-decoration-color: var.$color-text-link;
+
+      &:hover {
+        color: var.$color-text-link-hover;
+        text-decoration-color: var.$color-text-link-hover;
+      }
 
       .external-link {
         opacity: 1;
@@ -105,7 +109,7 @@ const { data } = Astro.props;
       color: var.$color-text-primary;
       font-weight: bold;
 
-      & a {
+      a {
         color: inherit;
         text-decoration-color: transparent;
         transition: color 0.1s ease-in-out, text-decoration-color 0.1s ease-in-out;
