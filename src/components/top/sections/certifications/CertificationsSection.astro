@@ -1,11 +1,11 @@
 ---
+import { getCollection } from "astro:content";
+import Container from "@/components/Container.astro";
+import Paragraph from "@/components/Paragraph.astro";
 import Section from "@/components/Section.astro";
 import SectionTitle from "@/components/SectionTitle.astro";
-import Container from "@/components/Container.astro";
 import { m } from "@/paraglide/messages.js";
 import { getLocale } from "@/paraglide/runtime";
-import Paragraph from "@/components/Paragraph.astro";
-import { getCollection } from "astro:content";
 import CertificationCard from "./CertificationCard.astro";
 
 const locale = getLocale();
@@ -13,6 +13,9 @@ const locale = getLocale();
 const certifications = await getCollection("certifications", ({ id }) => {
   const [lang] = id.split("/");
   return lang === locale;
+});
+certifications.sort((a, b) => {
+  return a.data.date?.localeCompare(b.data.date || "", locale) ?? 0;
 });
 ---
 
