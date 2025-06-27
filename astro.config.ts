@@ -3,6 +3,7 @@ import mdx from "@astrojs/mdx";
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import { defineConfig } from "astro/config";
 import icon from "astro-icon";
+import partytown from "@astrojs/partytown";
 import inlangSettings from "./project.inlang/settings.json" with {
   type: "json",
 };
@@ -18,6 +19,11 @@ export default defineConfig({
     icon({
       iconDir: "src/assets/icons",
     }),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"]
+      }
+    })
   ],
   i18n: {
     defaultLocale: inlangSettings.baseLocale,

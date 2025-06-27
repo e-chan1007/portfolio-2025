@@ -9,6 +9,7 @@
 	"devDependencies": {
 		"@ascorbic/feed-loader": "^2.0.0",
 		"@astrojs/mdx": "^4.3.0",
+		"@astrojs/partytown": "^2.1.4",
 		"@biomejs/biome": "2.0.4",
 		"@iconify-json/devicon": "^1.2.29",
 		"@iconify-json/fluent": "^1.2.25",

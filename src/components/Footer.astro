@@ -1,6 +1,7 @@
 ---
 import { format } from "date-fns";
 import { getLocale } from "@/paraglide/runtime";
+import { m } from "@/paraglide/messages";
 ---
 
 <footer class="footer">
@@ -11,25 +12,28 @@ import { getLocale } from "@/paraglide/runtime";
       }
     </time>
   </p>
+  <div class="lang-switch">
+    Language:
+    {
+    getLocale() === "ja" ? (
+      <span class="lang-active">Japanese</span>
+      <span>/</span>
+      <a href="/en" class="lang-switch-link">
+        English
+      </a>
+    ) : (
+      <a href="/" class="lang-switch-link">
+        Japanese
+      </a>
+      <span>/</span>
+      <span class="lang-active">English</span>
+    )
+  }
+  </div>
   <p>
-    <div class="lang-switch">
-      Language:
-      {
-      getLocale() === "ja" ? (
-        <span class="lang-active">Japanese</span>
-        <span>/</span>
-        <a href="/en" class="lang-switch-link">
-          English
-        </a>
-      ) : (
-        <a href="/" class="lang-switch-link">
-          Japanese
-        </a>
-        <span>/</span>
-        <span class="lang-active">English</span>
-      )
-    }
-    </div>
+    <small>
+      { m["footer.ga"]() }
+    </small>
   </p>
 </footer>
 
@@ -68,5 +72,9 @@ import { getLocale } from "@/paraglide/runtime";
         opacity: 0.8;
       }
     }
+  }
+
+  small {
+    font-size: 0.75rem;
   }
 </style>

@@ -38,5 +38,8 @@
     "title": "Skills",
     "description": "I have a wide range of technical skills and interests, particularly in web development and programming.",
     "metrics": "Statistics from my GitHub repositories"
+  },
+  "footer": {
+    "ga": "This site uses Google Analytics to collect and analyze usage data anonymously."
   }
 }

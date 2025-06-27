@@ -1,6 +1,7 @@
 ---
 import fontCSS from "@/assets/styles/fonts.css?url";
 import Footer from "@/components/Footer.astro";
+import GTag from "@/components/GTag.astro";
 import ScrollToTopButton from "@/components/ScrollToTopButton.astro";
 import { getLocale } from "@/paraglide/runtime.js";
 
@@ -48,6 +49,7 @@ const locale = getLocale();
     <slot />
     <ScrollToTopButton />
     <Footer />
+    <GTag />
   </body>
 </html>
 
