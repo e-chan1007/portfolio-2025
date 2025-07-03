@@ -32,7 +32,6 @@
   description: |
     This is the information security inspection contest of the University of Electro-Communications.
     My team received a special award.
-
-# - title: Passed the Applied Information Technology Engineer Examination
-#   date: April 2025
-#   icon: fluent:certificate-24-filled
+- title: Passed the Applied Information Technology Engineer Examination
+  date: April 2025
+  icon: fluent:certificate-24-filled
