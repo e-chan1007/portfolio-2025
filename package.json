@@ -7,30 +7,30 @@
 		"preview": "astro preview"
 	},
 	"devDependencies": {
-		"@ascorbic/feed-loader": "^2.0.0",
-		"@astrojs/mdx": "^4.3.0",
-		"@astrojs/partytown": "^2.1.4",
-		"@biomejs/biome": "2.0.4",
-		"@iconify-json/devicon": "^1.2.29",
-		"@iconify-json/fluent": "^1.2.25",
-		"@iconify-json/logos": "^1.2.4",
-		"@iconify-json/octicon": "^1.2.6",
-		"@iconify-json/simple-icons": "^1.2.40",
-		"@iconify-json/vscode-icons": "^1.2.23",
-		"@iconify/json": "^2.2.350",
+		"@ascorbic/feed-loader": "^2.0.1",
+		"@astrojs/mdx": "^4.3.14",
+		"@astrojs/partytown": "^2.1.6",
+		"@biomejs/biome": "^2.4.9",
+		"@iconify-json/devicon": "^1.2.61",
+		"@iconify-json/fluent": "^1.2.43",
+		"@iconify-json/logos": "^1.2.11",
+		"@iconify-json/octicon": "^1.2.22",
+		"@iconify-json/simple-icons": "^1.2.75",
+		"@iconify-json/vscode-icons": "^1.2.45",
+		"@iconify/json": "^2.2.456",
 		"@inlang/paraglide-js": "2.1.0",
 		"@types/bun": "latest",
 		"date-fns": "^4.1.0",
-		"sass-embedded": "^1.89.2",
-		"typescript": "^5.8.3"
+		"sass-embedded": "^1.98.0",
+		"typescript": "^5.9.3"
 	},
 	"packageManager": "bun@1.2.16",
 	"dependencies": {
-		"@astrojs/cloudflare": "^12.5.5",
-		"@fontsource-variable/inter": "^5.2.6",
-		"@fontsource-variable/noto-sans-jp": "^5.2.6",
-		"astro": "^5.9.4",
+		"@astrojs/cloudflare": "^12.6.13",
+		"@fontsource-variable/inter": "^5.2.8",
+		"@fontsource-variable/noto-sans-jp": "^5.2.10",
+		"astro": "^5.18.1",
 		"astro-icon": "^1.1.5",
-		"octokit": "^5.0.3"
+		"octokit": "^5.0.5"
 	}
 }
