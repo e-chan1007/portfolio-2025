@@ -12,30 +12,36 @@ import ArticleCard from "./ArticleCard.astro";
 const qiitaFeed = await getCollection("qiitaFeed");
 const zennFeed = await getCollection("zennFeed");
 
-const articles = [...qiitaFeed, ...zennFeed].sort((a, b) =>
-  compareDesc(a.data.published || 0, b.data.published || 0)
-).slice(0, 6);
+const articles = [...qiitaFeed, ...zennFeed]
+  .sort((a, b) => compareDesc(a.data.published || 0, b.data.published || 0))
+  .slice(0, 6);
 ---
 
-<Section id="about">
+<Section id="articles">
   <Container>
     <SectionTitle>{m["articles.title"]()}</SectionTitle>
     <Paragraph centering>{m["articles.description"]()}</Paragraph>
     <div class="article-list">
-    {
-      articles.map((entry) => (
-          <ArticleCard entry={entry}  />
-      ))
-    }
+      {articles.map((entry) => <ArticleCard entry={entry} />)}
     </div>
     <Paragraph centering>
       {m["articles.readMore"]}
     </Paragraph>
     <div class="link-list">
-      <a href="https://qiita.com/e_chan1007" target="_blank" rel="noopener noreferrer" title={m["articles.readMoreAt"]({ platform: "Qiita" })}>
+      <a
+        href="https://qiita.com/e_chan1007"
+        target="_blank"
+        rel="noopener noreferrer"
+        title={m["articles.readMoreAt"]({ platform: "Qiita" })}
+      >
         <Icon name="qiita" />
       </a>
-      <a href="https://zenn.dev/e_chan1007" target="_blank" rel="noopener noreferrer" title={m["articles.readMoreAt"]({ platform: "Zenn" })}>
+      <a
+        href="https://zenn.dev/e_chan1007"
+        target="_blank"
+        rel="noopener noreferrer"
+        title={m["articles.readMoreAt"]({ platform: "Zenn" })}
+      >
         <Icon name="simple-icons:zenn" />
       </a>
     </div>

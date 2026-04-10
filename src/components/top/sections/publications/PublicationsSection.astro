@@ -6,28 +6,29 @@ import Section from "@/components/Section.astro";
 import SectionTitle from "@/components/SectionTitle.astro";
 import { m } from "@/paraglide/messages.js";
 import { getLocale } from "@/paraglide/runtime";
-import CertificationCard from "./CertificationCard.astro";
+import PublicationCard from "./PublicationCard.astro";
 
 const locale = getLocale();
 
-const certifications = await getCollection("certifications", ({ id }) => {
+const publications = await getCollection("publications", ({ id }) => {
   const [lang] = id.split("/");
   return lang === locale;
 });
-certifications.sort((a, b) => {
-  return a.data.date?.localeCompare(b.data.date || "", locale) ?? 0;
+
+publications.sort((a, b) => {
+  return a.data.title?.localeCompare(b.data.title || "") ?? 0;
 });
 ---
 
-<Section id="certifications">
+<Section id="publications">
   <Container>
-    <SectionTitle>{m["certifications.title"]()}</SectionTitle>
-    <Paragraph centering>{m["certifications.description"]()}</Paragraph>
-    <ul class="certifications-list">
+    <SectionTitle>{m["publications.title"]()}</SectionTitle>
+    <Paragraph centering>{m["publications.description"]()}</Paragraph>
+    <ul class="works-list">
       {
-        certifications.map((certification) => (
+        publications.map((publication) => (
           <li>
-            <CertificationCard entry={certification} />
+            <PublicationCard entry={publication} />
           </li>
         ))
       }
@@ -38,17 +39,13 @@ certifications.sort((a, b) => {
 <style lang="scss">
   @use "@/assets/styles/variables" as var;
 
-  .certifications-list {
+  .works-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    align-items: center;
+    align-items: stretch;
     gap: 2rem;
     list-style: none;
     padding: 0;
     margin: 0;
-
-    li {
-      margin-bottom: 1.5rem;
-    }
   }
 </style>

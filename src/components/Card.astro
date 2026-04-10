@@ -10,7 +10,7 @@ type Props<Tag extends HTMLTag = "div"> = Polymorphic<{
 const { as: Component = "div", noPadding = false, ...props } = Astro.props;
 ---
 
-<Component class:list={["card", { pad: !noPadding }, props.class]} {...props}>
+<Component class:list={["card", { pad: !noPadding }]} {...props}>
   <slot />
 </Component>
 

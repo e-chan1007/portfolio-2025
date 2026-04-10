@@ -1,7 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { feedLoader } from "@ascorbic/feed-loader";
 import { file, glob } from "astro/loaders";
-import { idText } from "typescript";
 
 const certifications = defineCollection({
   loader: glob({ pattern: "**/*.yml", base: "./src/data/certifications" }),
@@ -23,6 +22,23 @@ const works = defineCollection({
       keywords: z.array(z.string()).optional(),
       cover: image().optional(),
       link: z.array(
+        z.object({
+          label: z.string(),
+          url: z.string(),
+        }),
+      ),
+    }),
+});
+
+const publications = defineCollection({
+  loader: glob({ pattern: "**/*.mdx", base: "./src/data/publications" }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      publisher: z.string().optional(),
+      date: z.string().optional(),
+      cover: image().optional(),
+      links: z.array(
         z.object({
           label: z.string(),
           url: z.string(),
@@ -68,6 +84,7 @@ export const collections = {
   certifications,
   history,
   works,
+  publications,
   qiitaFeed,
   zennFeed,
   skills,

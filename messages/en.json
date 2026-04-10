@@ -9,7 +9,7 @@
   },
   "about": {
     "title": "About me",
-    "description": "I am a third-year student in the Media Science and Engineering Program at the University of Electro-Communications in Japan. I am majoring in informatics and computer engineering. I began programming at the age of ten. I am interested in web development, particularly front-end development. I also enjoy working with various programming languages and frameworks."
+    "description": "I am a fourth-year student in the Media Science and Engineering Program at the University of Electro-Communications in Japan. I am majoring in informatics. I began programming at the age of ten. I am interested in web development, particularly front-end development. I also enjoy working with various programming languages and frameworks."
   },
   "works": {
     "title": "Works",
@@ -20,6 +20,10 @@
     "description": "I write articles about my interests and experiences. (I am sorry, but most of them are in Japanese.)",
     "readMore": "You can read more articles on Qiita and Zenn.",
     "readMoreAt": "Read more at {platform}"
+  },
+  "publications": {
+    "title": "Publications",
+    "description": "Here are some of the books I have written."
   },
   "prizes": {
     "title": "Prizes",
@@ -35,8 +39,7 @@
   },
   "skills": {
     "title": "Skills",
-    "description": "I have a wide range of technical skills and interests, particularly in web development and programming.",
-    "metrics": "Statistics from my GitHub repositories"
+    "description": "I have a wide range of technical skills and interests, particularly in web development and programming."
   },
   "footer": {
     "ga": "This site uses Google Analytics to collect and analyze usage data anonymously."
