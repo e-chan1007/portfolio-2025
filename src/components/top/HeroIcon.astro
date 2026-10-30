@@ -16,7 +16,7 @@ import icon from "@/assets/images/icon.svg";
     display: grid;
     place-items: center;
     width: clamp(150px, 15vw, 300px);
-    aspect-ratio: 1 / 1; /* ★ 円形を保つため、widthに合わせて高さを自動調整 */
+    aspect-ratio: 1 / 1;
     border-radius: 100%;
     background-color: var.$color-primary-300;
     box-shadow: var.$shadow-sm;
@@ -26,7 +26,7 @@ import icon from "@/assets/images/icon.svg";
 
   .icon-container {
     width: 100%;
-    aspect-ratio: 1 / 1; /* ★ 円形を保つため、widthに合わせて高さを自動調整 */
+    aspect-ratio: 1 / 1;
     display: grid;
     place-items: center;
     position: relative;
@@ -34,7 +34,6 @@ import icon from "@/assets/images/icon.svg";
     overflow: hidden;
   }
 
-  /* ★ 枠線の役割をする疑似要素を追加 */
   .icon-wrapper::after {
     content: "";
     position: absolute;

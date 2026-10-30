@@ -73,11 +73,13 @@ const cover = data.cover || noImage;
       display: block;
       grid-area: cover;
       border-bottom: 1px solid var.$color-border;
+      aspect-ratio: 2/3;
 
       img {
         display: block;
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
       }
     }
 

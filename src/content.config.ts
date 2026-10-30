@@ -1,6 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { feedLoader } from "@ascorbic/feed-loader";
-import { file, glob } from "astro/loaders";
+import { glob } from "astro/loaders";
 
 const certifications = defineCollection({
   loader: glob({ pattern: "**/*.yml", base: "./src/data/certifications" }),
@@ -60,14 +60,6 @@ const history = defineCollection({
   ),
 });
 
-const skills = defineCollection({
-  loader: file("./src/data/skills.yml"),
-  schema: z.object({
-    label: z.string(),
-    icon: z.string(),
-  }),
-});
-
 const qiitaFeed = defineCollection({
   loader: feedLoader({
     url: "https://qiita.com/e_chan1007/feed",
@@ -87,5 +79,4 @@ export const collections = {
   publications,
   qiitaFeed,
   zennFeed,
-  skills,
 };
