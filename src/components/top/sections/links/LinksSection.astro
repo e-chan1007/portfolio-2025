@@ -1,0 +1,44 @@
+---
+import { getEntry } from "astro:content";
+
+import Container from "@/components/Container.astro";
+import Section from "@/components/Section.astro";
+import SectionTitle from "@/components/SectionTitle.astro";
+import { m } from "@/paraglide/messages.js";
+import { getLocale } from "@/paraglide/runtime";
+import LinkCard from "./LinkCard.astro";
+
+const _links = await getEntry("links", getLocale());
+const links = _links?.data ?? [];
+---
+
+{
+  links.length > 0 && (
+    <Section id="links">
+      <Container>
+        <SectionTitle>{m["links.title"]()}</SectionTitle>
+        <ul class="links-list">
+          {links.map((link) => (
+            <li>
+              <LinkCard {...link} />
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </Section>
+  )
+}
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .links-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    align-items: stretch;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+</style>

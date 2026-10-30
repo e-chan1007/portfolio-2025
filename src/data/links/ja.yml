@@ -1,0 +1,5 @@
+# - name: Example
+#   url: https://example.com/
+#   description: This is a sample entry.
+#   icon: fluent:link-24-filled
+[]

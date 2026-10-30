@@ -47,6 +47,18 @@ const publications = defineCollection({
     }),
 });
 
+const links = defineCollection({
+  loader: glob({ pattern: "*.yml", base: "./src/data/links" }),
+  schema: z.array(
+    z.object({
+      name: z.string(),
+      url: z.string(),
+      description: z.string().optional(),
+      icon: z.string().optional(),
+    }),
+  ),
+});
+
 const history = defineCollection({
   loader: glob({ pattern: "*.yml", base: "./src/data/history" }),
   schema: z.array(
@@ -75,6 +87,7 @@ const zennFeed = defineCollection({
 export const collections = {
   certifications,
   history,
+  links,
   works,
   publications,
   qiitaFeed,

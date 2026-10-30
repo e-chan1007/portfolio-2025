@@ -37,6 +37,9 @@
     "title": "経歴",
     "description": "私の活動履歴を紹介します。"
   },
+  "links": {
+    "title": "リンク"
+  },
   "footer": {
     "ga": "本サイトでは、Google Analyticsを使用して、サイトの利用状況を匿名で収集・分析しています。"
   }

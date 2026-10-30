@@ -37,6 +37,9 @@
     "title": "History",
     "description": "Here is a brief history of my activities and achievements."
   },
+  "links": {
+    "title": "Links"
+  },
   "footer": {
     "ga": "This site uses Google Analytics to collect and analyze usage data anonymously."
   }

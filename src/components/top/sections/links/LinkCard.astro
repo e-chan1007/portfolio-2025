@@ -1,0 +1,96 @@
+---
+import { Icon } from "astro-icon/components";
+
+import Card from "@/components/Card.astro";
+
+interface Props {
+  name: string;
+  url: string;
+  description?: string;
+  icon?: string;
+}
+
+const { name, url, description, icon } = Astro.props;
+---
+
+<Card
+  as="a"
+  class="link-card"
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  {
+    icon ? (
+      <Icon class="icon" name={icon} />
+    ) : (
+      <Icon class="icon" name="fluent:link-24-filled" />
+    )
+  }
+  <h3>{name}</h3>
+  {description && <p>{description}</p>}
+  <Icon class="external-icon" name="fluent:open-16-filled" />
+</Card>
+
+<style lang="scss">
+  @use "@/assets/styles/variables" as var;
+
+  .link-card {
+    display: grid;
+    height: 100%;
+    grid-template: "icon name external" auto / auto 1fr auto;
+    align-items: start;
+    gap: 0.25rem 0.5rem;
+    color: inherit;
+    text-decoration: none;
+    transition:
+      box-shadow 0.2s ease-in-out,
+      border-color 0.2s ease-in-out;
+
+    &:has(p) {
+      grid-template:
+        "icon name external" auto
+        "_ description description" auto / auto 1fr auto;
+    }
+
+    &:hover {
+      border-color: var.$color-primary-400;
+      box-shadow: var.$shadow-md;
+    }
+
+    .icon {
+      grid-area: icon;
+      width: 1.5rem;
+      height: 1.5rem;
+      color: var.$color-text-primary;
+      place-self: center;
+      transform: translateY(0.075rem);
+    }
+
+    h3 {
+      grid-area: name;
+      font-size: 1.125rem;
+      color: var.$color-text-primary;
+    }
+
+    .external-icon {
+      grid-area: external;
+      width: 1rem;
+      height: 1rem;
+      color: var.$color-text-secondary;
+      place-self: center;
+      transition: color 0.2s ease;
+    }
+
+    p {
+      grid-area: description;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+      color: var.$color-text-secondary;
+    }
+
+    &:hover .external-icon {
+      color: var.$color-text-primary;
+    }
+  }
+</style>
